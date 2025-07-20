@@ -1,4 +1,12 @@
-from flask import Flask, request, render_template
+@app.route('/show')
+def show_data():
+    try:
+        with open('saved.txt', 'r') as f:
+            content = f.read()
+    except FileNotFoundError:
+        content = "هیچ اطلاعاتی ثبت نشده هنوز."
+
+    return f"<h2>اطلاعات فرم ثبت‌شده:</h2><pre>{content}</pre>"from flask import Flask, request, render_template
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
